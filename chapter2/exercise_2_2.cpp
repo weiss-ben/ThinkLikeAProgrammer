@@ -4,37 +4,42 @@ using std::cin;
 
 int main()
 {
-    short len = 2;
     short space = 3;
+    short pound = 2;
+    short length = 8;
+    bool ascending = true;
 
-    while(len <= 8)
+    while(length > 0)
     {
-        for(int j = 0; j < space; ++j)
+        for(int i = 0; i < space; ++i)
         {
             cout << ' ';
         }
-        for(int i = len; i > 0; --i)
+        for(int j = 0; j < pound; ++ j)
         {
             cout << '#';
         }
-        cout << '\n';
-        len +=2;
-        --space;
-    }
-    len -= 2;
-    ++space;
-    while(len > 0)
-    {
-        for(int j = 0; j < space; ++j)
+
+        //Check for print order
+        if(ascending)
         {
-            cout << ' ';
+            --space;
+            pound +=2;
         }
-        for(int i = 0; i < len; ++i)
+        else
         {
-            cout << '#';
+            ++space;
+            pound -=2;
         }
+
+        if(space == -1)
+        {
+            ascending = false;
+            pound = 8;
+            space = 0;
+        }
+
+        --length;
         cout << '\n';
-        len -=2;
-        ++space;
     }
 }
