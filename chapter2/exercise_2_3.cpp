@@ -4,56 +4,44 @@ using std::cin;
 
 int main()
 {
-    short len = 12;
     short space = 0;
+    short pound = 2;
+    short length = 8;
+    bool ascending = true;
 
-    while(len > 0)
+    while(length > 0)
     {
-        //Left space
-        for(int j = 0; j < space; ++j)
+        for(int i = 0; i < space; ++i)
         {
             cout << ' ';
         }
-        //Left pound
-        for(int j = 0; j < space + 1; ++j)
+        for(int j = 0; j < pound / 2; ++ j)
         {
             cout << '#';
         }
-        //Center spaces
-        for(int i = len; i > space; --i)
-        {
-            cout << ' ';
-        }
-        //Right pound
-        for(int j = 0; j < space + 1; ++j)
-        {
-            cout << '#';
-        }
-        cout << '\n';
-        len -=3;
-        ++space;
-    }
 
-    while(len <= 12)
-    {
-        for(int i = space - 1; i > 0; --i)
+        //Check for order
+        if(ascending)
         {
-            cout << ' ';
+            ++space;
+            pound += 2;
         }
-        for(int j = 0; j < space; ++j)
+        else
         {
-            cout << '#';
+            --space;
+            pound -= 2;
         }
-        for(int i = space; i < len + 4; ++i)
+
+        //Switch order
+        if(pound == 10)
         {
-            cout << ' ';
+            ascending = false;
+
+            pound = 8;
+            space = 3;
         }
-        for(int j = 0; j < space; ++j)
-        {
-            cout << '#';
-        }
+
+        --length;
         cout << '\n';
-        len +=3;
-        --space;
     }
 }
